@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
 public class Player extends BaseDynamicEntity {
     Item item;
     float money;
-    int speed = 5;
+    int speed = 10;
     private Burger burger;
     private String direction = "right";
     private int interactionCounter = 0;
@@ -50,7 +50,7 @@ public class Player extends BaseDynamicEntity {
         }
         if(handler.getKeyManager().fattbut){
             for(BaseCounter counter: handler.getWorld().Counters){
-                if (counter instanceof EmptyCounter && counter.isInteractable()){
+                if (counter instanceof PlateCounter && counter.isInteractable()){
                     createBurger();
                 }
             }
@@ -62,6 +62,14 @@ public class Player extends BaseDynamicEntity {
                 }
             }
         }
+        
+        //implemented shift and control buttons to decrease and increase speeds, respectively
+        if(handler.getKeyManager().shiftButt) {
+        	this.speed = (this.speed > 0? this.speed-1 : this.speed);
+        }
+        if(handler.getKeyManager().ctrlButt) {
+        	this.speed++;
+        }
     }
 
     private void ringCustomer() {
@@ -69,7 +77,15 @@ public class Player extends BaseDynamicEntity {
         for(Client client: handler.getWorld().clients){
             boolean matched = ((Burger)client.order.food).equals(handler.getCurrentBurger());
             if(matched){
-                money+=client.order.value;
+            	
+            	//added check to see if patience of client is more than half, if so, pay more!
+            	if(client.patience > client.OGpatience/2) {
+            		System.out.println("Client tipped!");
+            		money += client.order.value + (client.order.value*0.15);
+            	}else {
+            		money+=client.order.value;
+            	}
+                
                 handler.getWorld().clients.remove(client);
                 handler.getPlayer().createBurger();
                 System.out.println("Total money earned is: " + String.valueOf(money));

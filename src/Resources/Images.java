@@ -30,6 +30,11 @@ public class Images {
     public static SpriteSheet kitchenCounterSpriteSheet;
     public static SpriteSheet burgerSpriteSheet;
     public static SpriteSheet chefSpriteSheet;
+    
+    //added doors
+    public static SpriteSheet doorSpriteSheet;
+    public static BufferedImage door;
+    
     public Images() {
 
         butstart = new BufferedImage[3];
@@ -38,15 +43,19 @@ public class Images {
         Options = new BufferedImage[2];
         kitchenChairTable = new BufferedImage[3];
         people = new BufferedImage[9];
-        kitchenCounter = new BufferedImage[8];
-        ingredients = new BufferedImage[7];
+        kitchenCounter = new BufferedImage[9];
+        ingredients = new BufferedImage[8];
         chef = new BufferedImage[4];
+        
         try {
 
             kitchenSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/sprite.png")));
             kitchenCounterSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/kitchen_cabinets_by_ayene_chan.png")));
             burgerSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/burger.png")));
             chefSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/chef.png")));
+            
+            //initializing doorSpriteSheet
+            doorSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/sprite.png")));
 
 
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/title.jpg"));
@@ -60,6 +69,10 @@ public class Images {
             kitchenChairTable[0] = kitchenSpriteSheet.crop(21,27,62,54);
             kitchenChairTable[1] = kitchenSpriteSheet.crop(108,14,30,35);
             kitchenChairTable[2] = kitchenSpriteSheet.crop(108,52,30,35);
+            
+            //generating doorSpriteSheet image 329,118,359,165
+            door = doorSpriteSheet.crop(68, 112, 41, 57);
+            
 
             people[0] = ImageIO.read(getClass().getResourceAsStream("/Sheets/People/Car_Designer3Female.png"));
             people[1] = ImageIO.read(getClass().getResourceAsStream("/Sheets/People/Doctor2Female.png"));
@@ -79,6 +92,7 @@ public class Images {
             kitchenCounter[5] = kitchenCounterSpriteSheet.crop(64,73,32,46);//cheese
             kitchenCounter[6] = kitchenCounterSpriteSheet.crop(0,133,32,50);//plates
             kitchenCounter[7] = kitchenCounterSpriteSheet.crop(0,63,34,56);//buns
+            kitchenCounter[8] = kitchenCounterSpriteSheet.crop(129,69,33,52);//onions
 
             ingredients[0] = burgerSpriteSheet.crop(25, 16, 112, 43); // top bun
             ingredients[1] = burgerSpriteSheet.crop(30, 134, 103, 48); // patty
@@ -87,6 +101,7 @@ public class Images {
             ingredients[4] = burgerSpriteSheet.crop(161, 62, 117, 34); // lettuce
             ingredients[5] = burgerSpriteSheet.crop(444, 270, 115, 39); // bottom bun
             ingredients[6] = burgerSpriteSheet.crop(575, 263, 131, 51); // plate
+            ingredients[7] = burgerSpriteSheet.crop(319, 160, 100, 34); //onion
 
             chef[0] = chefSpriteSheet.crop(30,3,66,120);
             chef[1] = chefSpriteSheet.crop(159,3,66,120);

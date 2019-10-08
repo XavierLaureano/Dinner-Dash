@@ -61,24 +61,37 @@ public class Restaurant_1 extends BaseWorld {
         return this.clients.size() >=capacity;
     }
     public void render(Graphics g){
+    	
+    	//floor tile
         g.drawImage(Background,0,0,handler.getWidth(), handler.getHeight(),null);
+        
+        //welcome floor mat
         g.drawImage(Images.welcome,5,90,43,82,null);
+        
+        //door
+        g.drawImage(Images.door, handler.getWidth()/3, handler.getHeight()/3, 50, 100, null);
+        
+        //top left table and chairs
         g.drawImage(Images.kitchenChairTable[0],handler.getWidth()/3,90,96,96,null);
         g.drawImage(Images.kitchenChairTable[1],handler.getWidth()/3+96,140,52,52,null);
         g.drawImage(Images.kitchenChairTable[1],handler.getWidth()/3-52,140,52,52,null);
 
-        g.drawImage(Images.kitchenChairTable[0],handler.getWidth()/3+handler.getWidth()/6,190,96,96,null);
-        g.drawImage(Images.kitchenChairTable[2],handler.getWidth()/3+handler.getWidth()/6+96,240,52,52,null);
-        g.drawImage(Images.kitchenChairTable[2],handler.getWidth()/3+handler.getWidth()/6-52,240,52,52,null);
+        //center table and chairs
+//        g.drawImage(Images.kitchenChairTable[0],handler.getWidth()/3+handler.getWidth()/6,190,96,96,null);
+//        g.drawImage(Images.kitchenChairTable[2],handler.getWidth()/3+handler.getWidth()/6+96,240,52,52,null);
+//        g.drawImage(Images.kitchenChairTable[2],handler.getWidth()/3+handler.getWidth()/6-52,240,52,52,null);
 
+        //top right table and chairs
         g.drawImage(Images.kitchenChairTable[0],handler.getWidth()/3+handler.getWidth()/3,90,96,96,null);
         g.drawImage(Images.kitchenChairTable[1],handler.getWidth()/3+handler.getWidth()/3+96,140,52,52,null);
         g.drawImage(Images.kitchenChairTable[2],handler.getWidth()/3+handler.getWidth()/3-52,140,52,52,null);
 
+        //lower right table and chairs
         g.drawImage(Images.kitchenChairTable[0],handler.getWidth()/3+handler.getWidth()/3,292,96,96,null);
         g.drawImage(Images.kitchenChairTable[2],handler.getWidth()/3+handler.getWidth()/3+96,312,52,52,null);
         g.drawImage(Images.kitchenChairTable[1],handler.getWidth()/3+handler.getWidth()/3-52,312,52,52,null);
 
+        //lower left table and chairs
         g.drawImage(Images.kitchenChairTable[0],handler.getWidth()/3,292,96,96,null);
         g.drawImage(Images.kitchenChairTable[2],handler.getWidth()/3+96,312,52,52,null);
         g.drawImage(Images.kitchenChairTable[2],handler.getWidth()/3-52,312,52,52,null);

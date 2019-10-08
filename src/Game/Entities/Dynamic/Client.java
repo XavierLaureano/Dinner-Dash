@@ -42,6 +42,11 @@ public class Client extends BaseDynamicEntity {
                     ((Burger) order.food).addIngredient(Item.cheese);
 
                     break;
+                    
+                case 4:
+                	((Burger) order.food).addIngredient(Item.onion);
+                	
+                	break;
 
             }
 
