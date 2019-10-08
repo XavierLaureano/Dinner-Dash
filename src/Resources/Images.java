@@ -31,9 +31,12 @@ public class Images {
     public static SpriteSheet burgerSpriteSheet;
     public static SpriteSheet chefSpriteSheet;
     
-    //added doors
+    //added extra objects for world
     public static SpriteSheet doorSpriteSheet;
+    public static SpriteSheet extraSpriteSheet;
     public static BufferedImage door;
+    public static BufferedImage extraSprites[];
+    
     
     public Images() {
 
@@ -46,6 +49,7 @@ public class Images {
         kitchenCounter = new BufferedImage[9];
         ingredients = new BufferedImage[8];
         chef = new BufferedImage[4];
+        extraSprites = new BufferedImage[5];
         
         try {
 
@@ -54,8 +58,9 @@ public class Images {
             burgerSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/burger.png")));
             chefSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/chef.png")));
             
-            //initializing doorSpriteSheet
+            //initializing doorSpriteSheet and extraSpriteSheet
             doorSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/sprite.png")));
+            extraSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/extraSprites.png")));
 
 
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/title.jpg"));
@@ -70,8 +75,11 @@ public class Images {
             kitchenChairTable[1] = kitchenSpriteSheet.crop(108,14,30,35);
             kitchenChairTable[2] = kitchenSpriteSheet.crop(108,52,30,35);
             
-            //generating doorSpriteSheet image 329,118,359,165
+            //generating extraSprites
             door = doorSpriteSheet.crop(68, 112, 41, 57);
+            extraSprites[0] = extraSpriteSheet.crop(147,76,105,71);
+            extraSprites[1] = extraSpriteSheet.crop(0,220,33,42);
+            extraSprites[2] = extraSpriteSheet.crop(7,2,57,54);
             
 
             people[0] = ImageIO.read(getClass().getResourceAsStream("/Sheets/People/Car_Designer3Female.png"));

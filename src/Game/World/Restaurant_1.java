@@ -68,13 +68,18 @@ public class Restaurant_1 extends BaseWorld {
         //welcome floor mat
         g.drawImage(Images.welcome,5,90,43,82,null);
         
-        //door
-        g.drawImage(Images.door, handler.getWidth()/3, handler.getHeight()/3, 50, 100, null);
+        //carpet
+        g.drawImage(Images.extraSprites[0], 190, 40, 500, 400, null);
+        
+        //barrels
+        g.drawImage(Images.extraSprites[2], handler.getWidth()-90, 20, 100, 100, null);
         
         //top left table and chairs
         g.drawImage(Images.kitchenChairTable[0],handler.getWidth()/3,90,96,96,null);
         g.drawImage(Images.kitchenChairTable[1],handler.getWidth()/3+96,140,52,52,null);
         g.drawImage(Images.kitchenChairTable[1],handler.getWidth()/3-52,140,52,52,null);
+        //cabinet
+        g.drawImage(Images.extraSprites[1], handler.getWidth()/3+25, 90, 50, 50, null);
 
         //center table and chairs
 //        g.drawImage(Images.kitchenChairTable[0],handler.getWidth()/3+handler.getWidth()/6,190,96,96,null);
@@ -90,6 +95,8 @@ public class Restaurant_1 extends BaseWorld {
         g.drawImage(Images.kitchenChairTable[0],handler.getWidth()/3+handler.getWidth()/3,292,96,96,null);
         g.drawImage(Images.kitchenChairTable[2],handler.getWidth()/3+handler.getWidth()/3+96,312,52,52,null);
         g.drawImage(Images.kitchenChairTable[1],handler.getWidth()/3+handler.getWidth()/3-52,312,52,52,null);
+        //cabinet
+        g.drawImage(Images.extraSprites[1], handler.getWidth()/3+280, 292, 50, 50, null);
 
         //lower left table and chairs
         g.drawImage(Images.kitchenChairTable[0],handler.getWidth()/3,292,96,96,null);
