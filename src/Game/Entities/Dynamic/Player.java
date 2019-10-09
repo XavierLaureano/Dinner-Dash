@@ -78,18 +78,33 @@ public class Player extends BaseDynamicEntity {
             boolean matched = ((Burger)client.order.food).equals(handler.getCurrentBurger());
             if(matched){
             	
-            	//added check to see if patience of client is more than half, if so, pay more!
-            	if(client.patience > client.OGpatience/2) {
-            		System.out.println("Client tipped!");
-            		money += client.order.value + (client.order.value*0.15);
+            	//added check to see if patience of client is more than half (and inspector), if so, pay more!
+            	if(client.isInspector) {
+            		System.out.println("Congrats! Inspector has left a good review!");
+            		handler.getWorld().isReviewed = true;
+            		handler.getWorld().inspectorBuff = true;
+            		//this adds 12% more patience to each client
+            		for(Client c : handler.getWorld().clients) {
+            			System.out.print("This client's patience was: " + c.getCurrentPatience());
+            			c.setPatience(c.getCurrentPatience() + c.getCurrentPatience()*0.12);
+            			System.out.println(", but is now: " + c.getCurrentPatience());
+            		}
+            		money += client.order.value;
             	}else {
-            		money+=client.order.value;
+            		//if client's order is completed before reaching half patience, tip!
+            		if(client.patience > client.OGpatience/2) {
+                		System.out.print("Client tipped! ");
+                		money += client.order.value + (client.order.value*0.15);
+                	}else {
+                		money+=client.order.value;
+                	}
             	}
                 
                 handler.getWorld().clients.remove(client);
                 handler.getPlayer().createBurger();
                 System.out.println("Total money earned is: " + String.valueOf(money));
                 return;
+                
             }
 
         }
@@ -121,4 +136,15 @@ public class Player extends BaseDynamicEntity {
     public Burger getBurger(){
         return this.burger;
     }
+    
+    //function to get player's money
+    public float getMoney() {
+    	return this.money;
+    }
+    
+    //function to set player's money
+    public void setMoney(float f) {
+    	this.money = f;
+    }
+    
 }

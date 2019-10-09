@@ -22,8 +22,9 @@ public class Restaurant_1 extends BaseWorld {
         if(count >= 5*60 && !isFull()){
             count = 0;
             for(Client client: this.clients){
-                    client.move();
-                }
+            	if(client.yPos+102 != 606)
+            		client.move();
+            }
             this.generateClient();
         }else if(count >= 5*60 && isFull()){
             count=0;
@@ -39,9 +40,16 @@ public class Restaurant_1 extends BaseWorld {
                 }
             }
             if(left){
+            	if(toLeave.isInspector) {
+            		System.out.println("Oh No! Inspector placed a bad review... This has cost you: $" + handler.getPlayer().getMoney()/2);
+            		handler.getPlayer().setMoney(handler.getPlayer().getMoney()/2);
+            		handler.getWorld().isReviewed = true;
+            		handler.getWorld().inspectorBuff = false;
+            	}
                 this.clients.remove(toLeave);
                 for (Client client : toMove) {
-                    client.move();
+                	if(client.yPos+102 != 606)
+                		client.move();
                 }
                 this.generateClient();
             }
@@ -78,7 +86,7 @@ public class Restaurant_1 extends BaseWorld {
         g.drawImage(Images.kitchenChairTable[0],handler.getWidth()/3,90,96,96,null);
         g.drawImage(Images.kitchenChairTable[1],handler.getWidth()/3+96,140,52,52,null);
         g.drawImage(Images.kitchenChairTable[1],handler.getWidth()/3-52,140,52,52,null);
-        //cabinet
+        //plant
         g.drawImage(Images.extraSprites[1], handler.getWidth()/3+25, 90, 50, 50, null);
 
         //center table and chairs
@@ -95,7 +103,7 @@ public class Restaurant_1 extends BaseWorld {
         g.drawImage(Images.kitchenChairTable[0],handler.getWidth()/3+handler.getWidth()/3,292,96,96,null);
         g.drawImage(Images.kitchenChairTable[2],handler.getWidth()/3+handler.getWidth()/3+96,312,52,52,null);
         g.drawImage(Images.kitchenChairTable[1],handler.getWidth()/3+handler.getWidth()/3-52,312,52,52,null);
-        //cabinet
+        //plant
         g.drawImage(Images.extraSprites[1], handler.getWidth()/3+280, 292, 50, 50, null);
 
         //lower left table and chairs

@@ -8,6 +8,7 @@ import Main.Handler;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class BaseWorld {
 
@@ -18,6 +19,10 @@ public class BaseWorld {
     public Handler handler;
 
     public ArrayList<Client> clients = new ArrayList<>();
+    
+    //boolean checks to see if a review has been conducted, and if inspector buff is on
+    public boolean isReviewed = false;
+    public boolean inspectorBuff = false;
 
     public BaseWorld(BufferedImage Background, BaseCounter Counters[], Handler handler, Player player){
         this.Background = Background;
@@ -28,7 +33,22 @@ public class BaseWorld {
     }
 
     public Client generateClient(){
-        Client client =  new Client(0,96,handler);
+    	
+    	Client client = new Client(0,96,handler);
+    	
+    	System.out.print("This client's patience is: " + client.getPatience());
+    	
+    	if(this.isReviewed) {
+    		client.setPatience(this.inspectorBuff ? client.getPatience() + client.getPatience()*0.10 : client.getPatience() - client.getPatience()*0.06);
+    		if(inspectorBuff) {
+    			System.out.println(", but now it is: " + client.getCurrentPatience() + " (this is an upgrade)");
+    		}else {
+    			System.out.println(", but now it is: " + client.getCurrentPatience() + " (this is a downgrade)");
+    		}
+    	}
+    	
+    	System.out.println();
+    	
         this.clients.add(client);
         return client;
     }
@@ -40,4 +60,10 @@ public class BaseWorld {
     public void render(Graphics g){
 
     }
+    
+    public void increasePatience() {
+    	for(Client c : this.clients) {
+    	}
+    }
+    
 }
