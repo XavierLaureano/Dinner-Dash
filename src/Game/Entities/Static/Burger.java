@@ -10,6 +10,9 @@ public class Burger extends Food{
     public int x, y, width,height;
     public ArrayList<Item> ingredients = new ArrayList<>();
     ArrayList<BufferedImage> sprite = new ArrayList<>();
+    
+    //boolean to check if burger is well made
+    boolean wellMade = false;
 
 
     public Burger(int x, int y, int width, int height){
@@ -48,4 +51,15 @@ public class Burger extends Food{
         }
         return true;
     }
+    
+    //gets whether or not burger is well made
+    public boolean getWellness() {
+    	return this.wellMade;
+    }
+    
+    //sets the wellness of a burger
+    public void setWellness(boolean isWell) {
+    	this.wellMade = isWell;
+    }
+    
 }

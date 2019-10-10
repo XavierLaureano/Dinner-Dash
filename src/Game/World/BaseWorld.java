@@ -36,14 +36,13 @@ public class BaseWorld {
     	
     	Client client = new Client(0,96,handler);
     	
-    	System.out.print("This client's patience is: " + client.getPatience());
-    	
     	if(this.isReviewed) {
+        	System.out.print("This client's patience was changed from: " + client.getPatience());
     		client.setPatience(this.inspectorBuff ? client.getPatience() + client.getPatience()*0.10 : client.getPatience() - client.getPatience()*0.06);
     		if(inspectorBuff) {
-    			System.out.println(", but now it is: " + client.getCurrentPatience() + " (this is an upgrade)");
+    			System.out.println(", to: " + client.getCurrentPatience() + " (this is an upgrade)");
     		}else {
-    			System.out.println(", but now it is: " + client.getCurrentPatience() + " (this is a downgrade)");
+    			System.out.println(", to: " + client.getCurrentPatience() + " (this is a downgrade)");
     		}
     	}
     	
@@ -59,11 +58,6 @@ public class BaseWorld {
 
     public void render(Graphics g){
 
-    }
-    
-    public void increasePatience() {
-    	for(Client c : this.clients) {
-    	}
     }
     
 }

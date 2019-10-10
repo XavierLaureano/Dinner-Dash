@@ -83,22 +83,33 @@ public class Player extends BaseDynamicEntity {
             		System.out.println("Congrats! Inspector has left a good review!");
             		handler.getWorld().isReviewed = true;
             		handler.getWorld().inspectorBuff = true;
+            		
             		//this adds 12% more patience to each client
             		for(Client c : handler.getWorld().clients) {
             			System.out.print("This client's patience was: " + c.getCurrentPatience());
             			c.setPatience(c.getCurrentPatience() + c.getCurrentPatience()*0.12);
             			System.out.println(", but is now: " + c.getCurrentPatience());
             		}
+            		
             		money += client.order.value;
+            		
             	}else {
+            		
             		//if client's order is completed before reaching half patience, tip!
             		if(client.patience > client.OGpatience/2) {
-                		System.out.print("Client tipped! ");
+                		System.out.println("Client tipped! $" + client.order.value*0.15);
                 		money += client.order.value + (client.order.value*0.15);
                 	}else {
-                		money+=client.order.value;
+                		money += client.order.value;
                 	}
+            		
             	}
+            	
+            	//if the burger is well made, then add 12% of what the client was going to give!
+            	if(this.burger.getWellness()) {
+            		System.out.println("Well made burger has net you an extra: $" + (this.money*0.12));
+            	}
+        		this.money = (float) (this.burger.getWellness() ? this.money + (this.money*0.12) : this.money + 0);
                 
                 handler.getWorld().clients.remove(client);
                 handler.getPlayer().createBurger();

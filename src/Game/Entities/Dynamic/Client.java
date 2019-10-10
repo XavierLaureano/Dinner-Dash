@@ -84,31 +84,16 @@ public class Client extends BaseDynamicEntity {
     }
     
     public void tick(){
+    	
+    	//this increases the patience threshold every tick
+    	this.patienceThreshold++;
+    	
         patience--;
         if(patience<=0){
             isLeaving=true;
         }
         
-        //if patience threshold reaches 8% of patience, then trigger lower nearby patience event
-        patienceThreshold++;
-        if(patienceThreshold == patienceAntiV) {
-        	patienceThreshold = 0;
-        	lowerNearbyPatience();
-        }
-        
     }
-    
-    private void lowerNearbyPatience() {
-    	
-		int n = new Random().nextInt(2);
-		
-		if(n > 0) {
-			
-		}else {
-			
-		}
-		
-	}
 
 	public void render(Graphics g){
 
@@ -137,6 +122,18 @@ public class Client extends BaseDynamicEntity {
     //sets the patience of the client
     public void setPatience(double d) {
     	this.patience = (int) d;
+    }
+    
+    //this is activates the effect of anti-v, by checking the patienceThreshold against the 8%
+    public boolean activateAntiV() {
+    	
+    	if(this.patienceThreshold == this.patienceAntiV) {
+    		this.patienceThreshold = 0;
+    		return true;
+    	}
+    	
+    	return false;
+    	
     }
     
 }

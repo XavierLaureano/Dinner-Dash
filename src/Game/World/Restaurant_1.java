@@ -8,6 +8,7 @@ import Resources.Images;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Restaurant_1 extends BaseWorld {
     private int count=0;
@@ -22,8 +23,7 @@ public class Restaurant_1 extends BaseWorld {
         if(count >= 5*60 && !isFull()){
             count = 0;
             for(Client client: this.clients){
-            	if(client.yPos+102 != 606)
-            		client.move();
+            	client.move();
             }
             this.generateClient();
         }else if(count >= 5*60 && isFull()){
@@ -54,15 +54,53 @@ public class Restaurant_1 extends BaseWorld {
                 this.generateClient();
             }
         }
-
-
+        
+         
+        int n, index, newPatience, count = 0, size = this.clients.size();
         for(Client client: this.clients){
+        	
+        	//if the client is an anti-v, and the parameters for its effect is satisfied, then trigger event
+        	if(client.isAntiV && client.activateAntiV()) {
+        		
+        		n = new Random().nextInt(2);
+        		        		
+        		//if the random number is 1, then the client influenced by anti-v is after
+        		if(n > 0) {
+        			
+        			index = (count+1 >= size ? ((count+1) % size) : count+1);
+        			
+        		//if the random number is 0, then the client influenced by anti-v is before
+        		}else {
+        			
+        			index = (count-1 < 0 ? ((((count-1) % size) + size) % size) : count-1);
+        			
+        		}
+        		
+        		System.out.println(">>>>>START OF ANTI-V CHECK>>>>>");
+        		System.out.println("n is: " + n);
+    			System.out.println("index of anti-v: " + count + ", index of client: " + index);
+    			System.out.println("current patience of client: " + this.clients.get(index).getCurrentPatience());
+
+    			newPatience = (int) (this.clients.get(index).getCurrentPatience() - this.clients.get(index).getCurrentPatience()*0.04);
+    			this.clients.get(index).setPatience(newPatience);
+    			
+    			System.out.println("new patience of client: " + this.clients.get(index).getCurrentPatience());
+    			System.out.println(">>>>>END OF ANTI-V CHECK>>>>>");
+        		
+        	}
+        	
             client.tick();
+            
+            count++;
+            
         }
+        
         for(BaseCounter counter: Counters){
             counter.tick();
         }
+        
         handler.getPlayer().tick();
+        
     }
 
     public boolean isFull(){

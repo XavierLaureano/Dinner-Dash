@@ -39,12 +39,18 @@ public class StoveCounter extends BaseCounter {
             item.sprite = Images.ingredients[1];
         }else{
             if(timeInStove<burntTime && timeInStove>cookTime){
+            	
+            	//if the tint is between 0.48 and 0.53, then set it as a well made burger :)
+            	handler.getPlayer().getBurger().setWellness((this.tint >= 0.48 && this.tint <= 0.53) ? true : false);
+            	System.out.println("Burger tint: " + this.tint);
+            	
                 item.sprite = Images.tint(item.sprite,tint,tint,tint);
                 handler.getPlayer().getBurger().addIngredient(item);
                 cooking=false;
                 burnt=false;
                 timeInStove=0;
                 tint = 1;
+                
             }
             else if(timeInStove>burntTime){
                 cooking=false;
