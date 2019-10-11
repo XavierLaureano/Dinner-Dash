@@ -96,6 +96,19 @@ public class Client extends BaseDynamicEntity {
     }
 
 	public void render(Graphics g){
+		
+		//Implementation of patience bar for visual information on Patience
+		
+		float newPatience = this.patience/100;
+		float newOGPatience = this.OGpatience/100;
+		int patienceBar = (int) ((newPatience/newOGPatience) * 80);
+		
+		g.setColor(Color.GREEN);
+		g.setFont(new Font("TimesNewRoman", Font.BOLD, 20));
+		g.drawString("Patience", xPos + 60, yPos + 30);
+		
+		g.setColor(Color.WHITE);
+		g.fillRect(xPos + 60, yPos + 35, patienceBar, 10);
 
         if(!isLeaving){
             g.drawImage(Images.tint(sprite,1.0f,((float)patience/(float)OGpatience),((float)patience/(float)OGpatience)),xPos,yPos,width,height,null);
