@@ -187,7 +187,7 @@ public class Player extends BaseDynamicEntity {
 		
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("ComicSans", Font.BOLD, 20));
-		g.drawString("Costumers Served: " + costumers, handler.getWidth() - 225, 30);
+		g.drawString("Customers Served: " + costumers, handler.getWidth() - 225, 30);
 	}
 
 	public void interact(){
