@@ -91,7 +91,6 @@ public class Client extends BaseDynamicEntity {
         
         if(patience <= 0){
             isLeaving = true;
-            handler.getPlayer().leavingCostumer++;
         }
         
     }

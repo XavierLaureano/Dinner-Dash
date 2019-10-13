@@ -3,6 +3,7 @@ package Game.World;
 import Game.Entities.Dynamic.Client;
 import Game.Entities.Dynamic.Player;
 import Game.Entities.Static.*;
+import Game.GameStates.State;
 import Main.Handler;
 import Resources.Images;
 
@@ -40,8 +41,9 @@ public class Restaurant_1 extends BaseWorld {
                 }
             }
             if(left){
+            	handler.getPlayer().leavingCostumer++;
             	if(toLeave.isInspector) {
-            		System.out.println("Oh No! Inspector placed a bad review... This has cost you: $" + handler.getPlayer().getMoney()/2);
+//            		System.out.println("Oh No! Inspector placed a bad review... This has cost you: $" + handler.getPlayer().getMoney()/2);
             		handler.getPlayer().setMoney(handler.getPlayer().getMoney()/2);
             		handler.getWorld().isReviewed = true;
             		handler.getWorld().inspectorBuff = false;
@@ -76,16 +78,16 @@ public class Restaurant_1 extends BaseWorld {
         			
         		}
         		
-        		System.out.println(">>>>>START OF ANTI-V CHECK>>>>>");
-        		System.out.println("n is: " + n);
-    			System.out.println("index of anti-v: " + count + ", index of client: " + index);
-    			System.out.println("current patience of client: " + this.clients.get(index).getCurrentPatience());
+//        		System.out.println(">>>>>START OF ANTI-V CHECK>>>>>");
+//        		System.out.println("n is: " + n);
+//    			System.out.println("index of anti-v: " + count + ", index of client: " + index);
+//    			System.out.println("current patience of client: " + this.clients.get(index).getCurrentPatience());
 
     			newPatience = (int) (this.clients.get(index).getCurrentPatience() - this.clients.get(index).getCurrentPatience()*0.04);
     			this.clients.get(index).setPatience(newPatience);
     			
-    			System.out.println("new patience of client: " + this.clients.get(index).getCurrentPatience());
-    			System.out.println(">>>>>END OF ANTI-V CHECK>>>>>");
+//    			System.out.println("new patience of client: " + this.clients.get(index).getCurrentPatience());
+//    			System.out.println(">>>>>END OF ANTI-V CHECK>>>>>");
         		
         	}
         	
