@@ -14,31 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>res/Buttons/X.png</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Desktop/X.png</locationURI>
-		</link>
-		<link>
-			<name>res/Sheets/G.png</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Desktop/G.png</locationURI>
-		</link>
-		<link>
-			<name>res/Sheets/GO.png</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Desktop/GO.png</locationURI>
-		</link>
-		<link>
-			<name>res/Sheets/P.png</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Desktop/P.png</locationURI>
-		</link>
-		<link>
-			<name>res/Sheets/WIN.png</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Desktop/WIN.png</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>

@@ -69,21 +69,21 @@ public class Images {
             doorSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/sprite.png")));
             extraSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/extraSprites.png")));
 
-            purplecount = ImageIO.read(getClass().getResourceAsStream("/Sheets/P.png"));
-            greycount = ImageIO.read(getClass().getResourceAsStream("/Sheets/G.png"));
+            purplecount = ImageIO.read(getClass().getResourceAsStream("/Sheets/p_sheet.png"));
+            greycount = ImageIO.read(getClass().getResourceAsStream("/Sheets/g_sheet.png"));
 
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/title.jpg"));
             Pause = ImageIO.read(getClass().getResourceAsStream("/Sheets/Pause.png"));
-            Win = ImageIO.read(getClass().getResourceAsStream("/Sheets/WIN.png"));
-            Lose = ImageIO.read(getClass().getResourceAsStream("/Sheets/GO.png"));
+            Win = ImageIO.read(getClass().getResourceAsStream("/Sheets/win_sheet.png"));
+            Lose = ImageIO.read(getClass().getResourceAsStream("/Sheets/go_sheet.png"));
             welcome = ImageIO.read(getClass().getResourceAsStream("/Sheets/Welcome.png"));
             floor = ImageIO.read(getClass().getResourceAsStream("/Sheets/floor.jpg"));
             butstart[0]= ImageIO.read(getClass().getResourceAsStream("/Buttons/NormBut.png"));//normbut
             butstart[1]= ImageIO.read(getClass().getResourceAsStream("/Buttons/HoverBut.png"));//hoverbut
             butstart[2]= ImageIO.read(getClass().getResourceAsStream("/Buttons/ClickedBut.png"));//clickbut
             
-            butquit[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/X.png"));
-            butquit[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/X.png"));
+            butquit[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/x_button.png"));
+            butquit[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/x_button.png"));
 
             kitchenChairTable[0] = kitchenSpriteSheet.crop(21,27,62,54);
             kitchenChairTable[1] = kitchenSpriteSheet.crop(108,14,30,35);
