@@ -18,7 +18,12 @@ public class KeyManager implements KeyListener {
 	public boolean shiftButt=false;
 	public boolean ctrlButt=false;
 
-
+	public boolean line1 = false;
+	public boolean line2 = false;
+	public boolean line3 = false;
+	public boolean line4 = false;
+	public boolean line5 = false;
+	
 	public KeyManager(){
 
 		keys = new boolean[256];
@@ -52,6 +57,12 @@ public class KeyManager implements KeyListener {
 		shiftButt = keys[KeyEvent.VK_SHIFT];
 		ctrlButt = keys[KeyEvent.VK_CONTROL];
 
+		line1 = keys[KeyEvent.VK_1];
+		line2 = keys[KeyEvent.VK_2];
+		line3 = keys[KeyEvent.VK_3];
+		line4 = keys[KeyEvent.VK_4];
+		line5 = keys[KeyEvent.VK_5];
+		
 	}
 
 	@Override

@@ -87,10 +87,10 @@ public class Client extends BaseDynamicEntity {
     	
     	//this increases the patience threshold every tick
     	this.patienceThreshold++;
-    	
         patience--;
-        if(patience<=0){
-            isLeaving=true;
+        
+        if(patience <= 0){
+            isLeaving = true;
         }
         
     }
