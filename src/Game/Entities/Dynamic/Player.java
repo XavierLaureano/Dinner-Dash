@@ -63,7 +63,7 @@ public class Player extends BaseDynamicEntity {
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_R)){
 			for(BaseCounter counter: handler.getWorld().Counters) {
 				if (counter instanceof PlateCounter && counter.isInteractable()) {
-//					ringCustomer();
+					ringCustomer();
 				}
 			}
 		}
@@ -113,62 +113,61 @@ public class Player extends BaseDynamicEntity {
 		if(money >= 50) {
 			State.setState(handler.getGame().winState);
 		}
-		if(leavingCostumer == 2) {
+		else if(leavingCostumer == 10) {
 			State.setState(handler.getGame().loseState);
-			System.out.println("Leaving Costumer:" + leavingCostumer);
 		}
 	}
 
-//	private void ringCustomer() {
-//
-//		for(Client client: handler.getWorld().clients){
-//			boolean matched = ((Burger)client.order.food).equals(handler.getCurrentBurger());
-//
-//			if(matched){
-//
-//				//added check to see if patience of client is more than half (and inspector), if so, pay more!
-//				if(client.isInspector) {
-//					System.out.println("Congrats! Inspector has left a good review!");
-//					handler.getWorld().isReviewed = true;
-//					handler.getWorld().inspectorBuff = true;
-//
-//					//this adds 12% more patience to each client
-//					for(Client c : handler.getWorld().clients) {
-//						System.out.print("This client's patience was: " + c.getCurrentPatience());
-//						c.setPatience(c.getCurrentPatience() + c.getCurrentPatience()*0.12);
-//						System.out.println(", but is now: " + c.getCurrentPatience());
-//					}
-//
-//					money += client.order.value;
-//
-//				}else {
-//
-//					//if client's order is completed before reaching half patience, tip!
-//					if(client.patience >= client.OGpatience/2) {
-//						System.out.println("Client tipped! $" + client.order.value*0.15);
-//						money += client.order.value + (client.order.value*0.15);
-//					}else {
-//						money += client.order.value;
-//					}
-//
-//				}
-//
-//				//if the burger is well made, then add 12% of what the client was going to give!
-//				if(this.burger.getWellness()) {
-//					System.out.println("Well made burger has net you an extra: $" + (this.money*0.12));
-//				}
-//
-//				this.money = (float) (this.burger.getWellness() ? this.money + (this.money*0.12) : this.money + 0);
-//
-//				handler.getWorld().clients.remove(client);
-//				handler.getPlayer().createBurger();
-//				System.out.println("Total money earned is: " + String.valueOf(money));
-//				return;
-//
-//			}
-//
-//		}
-//	}
+	private void ringCustomer() {
+
+		for(Client client: handler.getWorld().clients){
+			boolean matched = ((Burger)client.order.food).equals(handler.getCurrentBurger());
+
+			if(matched){
+
+				//added check to see if patience of client is more than half (and inspector), if so, pay more!
+				if(client.isInspector) {
+					System.out.println("Congrats! Inspector has left a good review!");
+					handler.getWorld().isReviewed = true;
+					handler.getWorld().inspectorBuff = true;
+
+					//this adds 12% more patience to each client
+					for(Client c : handler.getWorld().clients) {
+						System.out.print("This client's patience was: " + c.getCurrentPatience());
+						c.setPatience(c.getCurrentPatience() + c.getCurrentPatience()*0.12);
+						System.out.println(", but is now: " + c.getCurrentPatience());
+					}
+
+					money += client.order.value;
+
+				}else {
+
+					//if client's order is completed before reaching half patience, tip!
+					if(client.patience >= client.OGpatience/2) {
+						System.out.println("Client tipped! $" + client.order.value*0.15);
+						money += client.order.value + (client.order.value*0.15);
+					}else {
+						money += client.order.value;
+					}
+
+				}
+
+				//if the burger is well made, then add 12% of what the client was going to give!
+				if(this.burger.getWellness()) {
+					System.out.println("Well made burger has net you an extra: $" + (this.money*0.12));
+				}
+
+				this.money = (float) (this.burger.getWellness() ? this.money + (this.money*0.12) : this.money + 0);
+
+				handler.getWorld().clients.remove(client);
+				handler.getPlayer().createBurger();
+				System.out.println("Total money earned is: " + String.valueOf(money));
+				return;
+
+			}
+
+		}
+	}
 
 	public void render(Graphics g) {
 		if(direction=="right") {
