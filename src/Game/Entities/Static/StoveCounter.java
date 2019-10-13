@@ -59,7 +59,6 @@ public class StoveCounter extends BaseCounter {
                 tint = 1;
             }
         }
-
     }
 
     public void render(Graphics g){
