@@ -31,7 +31,6 @@ public class Player extends BaseDynamicEntity {
 
 	public void createBurger(){
 		burger = new Burger(handler.getWidth() - 110, 100, 100, 50);
-
 	}
 
 	public void tick(){
